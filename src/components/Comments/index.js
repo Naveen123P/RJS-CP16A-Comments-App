@@ -1,7 +1,7 @@
-import {Component} from "react"
-import {v4 as uuidv4} from "uuid"
+import {Component} from 'react'
+import {v4 as uuidv4} from 'uuid'
+import CommentItem from '../CommentItem'
 import './index.css'
-
 
 const initialContainerBackgroundClassNames = [
   'amber',
@@ -16,68 +16,81 @@ const initialContainerBackgroundClassNames = [
 const initialCommentsList = []
 // Write your code here
 class Comments extends Component {
-    state = {commentList: initialCommentsList, name: "", comment:""}
-    
-    onAddComment = () => {
-        event.preventDefault()
-        const {name, comment} = this.state
-        const newComment = {
-            id:uuidv4(),
-            name,
-            comment
-        }
-        if(name !== "" && comment!==""){
-            this.setState(prevState => ({commentList : [...prevState.commentList,newComment],
-        name:"",
-        comment: ""
-    }))
-        }
-    }
-    
-    onDeleteComment = (id) => {
-        const {commentList} = this.state
-        const filteredCommentList = commentList.filter(each => each.id !== id)
-        this.setState({commentList: filteredCommentList})
-    }
+  state = {commentList: initialCommentsList, name: '', comment: ''}
 
-    onChangeName = (event) => {
-        this.setState({name: event.target.value})
+  onAddComment = () => {
+    const {name, comment} = this.state
+    const newComment = {
+      id: uuidv4(),
+      name,
+      comment,
     }
-    onChangeComment = (event) => {
-        this.setState({comment: event.target.value})
+    if (name !== '' && comment !== '') {
+      this.setState(prevState => ({
+        commentList: [...prevState.commentList, newComment],
+        name: '',
+        comment: '',
+      }))
     }
+  }
 
-    render(){
-        const {commentList} = this.state
-        return(
-            <div className="bg-container">
-                <div className="comments-container">
-                    <h1 className="heading">
-                        Comments
-                    </h1>
-                    <p className="para">Say something about 4.0 Technologies</p>
-                    <form className="form-container" onSubmit={this.onAddComment}>
-                       <input type="text" placeholder="Your Name"/>
-                      <textarea type="text" placeholder="Your Comment" rows="8" cols="25"></textarea>
-                      <button type="submit" >Add Comment</button>
-                    </form>
-                </div>
-                <div className="img-container">
-                    <img src="https://assets.ccbp.in/frontend/react-js/comments-app/comments-img.png" alt="comments" className="comments-img"/>
-                </div>
-            </div>
-            <hr/>
-            <div className="comments-list">
-                <div className="comments-count">
-                    {commentList.length}
-                </div>
-                <p>Comments</p>
-            </div>
-            <ul>
-                {}
-            </ul>
-        )
-    }
+  onDeleteComment = id => {
+    const {commentList} = this.state
+    const filteredCommentList = commentList.filter(each => each.id !== id)
+    this.setState({commentList: filteredCommentList})
+  }
+
+  onChangeName = event => {
+    this.setState({name: event.target.value})
+  }
+
+  onChangeComment = event => {
+    this.setState({comment: event.target.value})
+  }
+
+  render() {
+    const {commentList} = this.state
+    return (
+      <div className="bg-container">
+        <div className="comments-container">
+          <h1 className="heading">Comments</h1>
+          <p className="para">Say something about 4.0 Technologies</p>
+          <form className="form-container" onSubmit={this.onAddComment}>
+            <input type="text" placeholder="Your Name" />
+            <textarea
+              type="text"
+              placeholder="Your Comment"
+              rows="8"
+              cols="25"
+            />
+            <button type="submit">Add Comment</button>
+          </form>
+        </div>
+        <div className="img-container">
+          <img
+            src="https://assets.ccbp.in/frontend/react-js/comments-app/comments-img.png"
+            alt="comments"
+            className="comments-img"
+          />
+        </div>
+
+        <div className="comments-list">
+          <div className="comments-count">{commentList.length}</div>
+          <p>Comments</p>
+        </div>
+        <ul>
+          {commentList.map(each => (
+            <CommentItem
+              key={each.id}
+              commentDetails={each}
+              onDeleteComment={this.onDeleteComment}
+              colors={initialContainerBackgroundClassNames}
+            />
+          ))}
+        </ul>
+      </div>
+    )
+  }
 }
 
 export default Comments
