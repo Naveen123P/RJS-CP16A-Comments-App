@@ -1,1 +1,42 @@
 /* Write your CSS here */
+.bg-container {
+  height: 100vh;
+  background-color: aliceblue;
+  padding: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+.comments-container {
+  display: flex;
+  flex-direction: column;
+}
+.para {
+  color: #475569;
+  font-weight: bold;
+}
+button {
+  color: aliceblue;
+  background-color: #0284c7;
+  padding: 5px;
+  border: none;
+}
+.comments-img {
+  height: 400px;
+  width: 400px;
+}
+hr {
+  color: #475569;
+}
+.comments-list {
+  display: flex;
+  align-items: center;
+}
+.comments-count {
+  height: 15px;
+  width: 15px;
+  background-color: #0284c7;
+  color: aliceblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
