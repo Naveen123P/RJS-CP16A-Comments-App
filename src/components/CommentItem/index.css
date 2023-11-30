@@ -27,3 +27,38 @@
 }
 
 /* Write your CSS here */
+.list-item {
+  border-bottom: 2px solid #475569;
+}
+.username-container {
+  display: flex;
+  align-items: center;
+}
+.user-profile {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  color: aliceblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 3px;
+}
+.username {
+  font-weight: bold;
+}
+.date-time {
+  color: #cbd2d9;
+}
+.like-delete-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  border-bottom: 2px solid #475569;
+}
+.blue-color {
+  color: #0b69ff;
+}
+.gray-color {
+  color: #475569;
+}
