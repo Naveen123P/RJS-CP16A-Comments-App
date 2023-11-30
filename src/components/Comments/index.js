@@ -26,11 +26,18 @@ class Comments extends Component {
             name,
             comment
         }
-        this.setState(prevState => ({commentList : [...prevState.commentList,newComment],
+        if(name !== "" && comment!==""){
+            this.setState(prevState => ({commentList : [...prevState.commentList,newComment],
         name:"",
         comment: ""
     }))
-
+        }
+    }
+    
+    onDeleteComment = (id) => {
+        const {commentList} = this.state
+        const filteredCommentList = commentList.filter(each => each.id !== id)
+        this.setState({commentList: filteredCommentList})
     }
 
     onChangeName = (event) => {
@@ -39,6 +46,7 @@ class Comments extends Component {
     onChangeComment = (event) => {
         this.setState({comment: event.target.value})
     }
+
     render(){
         const {commentList} = this.state
         return(
@@ -50,7 +58,7 @@ class Comments extends Component {
                     <p className="para">Say something about 4.0 Technologies</p>
                     <form className="form-container" onSubmit={this.onAddComment}>
                        <input type="text" placeholder="Your Name"/>
-                      <textarea type="text" placeholder="Your Comment" rows="8" cols="55"></textarea>
+                      <textarea type="text" placeholder="Your Comment" rows="8" cols="25"></textarea>
                       <button type="submit" >Add Comment</button>
                     </form>
                 </div>
@@ -61,7 +69,7 @@ class Comments extends Component {
             <hr/>
             <div className="comments-list">
                 <div className="comments-count">
-                    {commentList.length()}
+                    {commentList.length}
                 </div>
                 <p>Comments</p>
             </div>
