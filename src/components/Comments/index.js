@@ -20,10 +20,20 @@ class Comments extends Component {
 
   onAddComment = () => {
     const {name, comment} = this.state
+    const initialBackgroundColorClassNames = `initial-container ${
+      initialContainerBackgroundClassNames[
+        Math.ceil(
+          Math.random() * initialContainerBackgroundClassNames.length - 1,
+        )
+      ]
+    }`
     const newComment = {
       id: uuidv4(),
       name,
       comment,
+      date: new Date(),
+      isLiked: false,
+      initialClassName: initialBackgroundColorClassNames,
     }
     console.log(newComment)
     if (name !== '' && comment !== '') {
@@ -33,6 +43,19 @@ class Comments extends Component {
         comment: '',
       }))
     }
+  }
+
+  changeTheLikeStatus = id => {
+    const {commentList} = this.state
+    const filteredCommentItem = commentList.filter(each => each.id === id)
+    const getIsLikedOrNot = filteredCommentItem[0].isLiked
+    const filteredObject = {
+      ...filteredCommentItem[0],
+      isLiked: !getIsLikedOrNot,
+    }
+    this.setState(prevState => ({
+      commentList: [...prevState.CommentItem, filteredObject],
+    }))
   }
 
   onDeleteComment = id => {
@@ -89,7 +112,7 @@ class Comments extends Component {
               key={each.id}
               commentDetails={each}
               onDeleteComment={this.onDeleteComment}
-              colors={initialContainerBackgroundClassNames}
+              changeTheLikeStatus={this.changeTheLikeStatus}
             />
           ))}
         </ul>
