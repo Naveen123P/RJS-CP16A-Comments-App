@@ -1,8 +1,12 @@
 /* Write your CSS here */
-.bg-container {
+.bg-container1 {
   height: 100vh;
   background-color: aliceblue;
   padding: 50px;
+  display: flex;
+  flex-direction: column;
+}
+.bg-container2 {
   display: flex;
   justify-content: space-between;
   border-bottom: 2px solid #475569;
@@ -41,4 +45,9 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
