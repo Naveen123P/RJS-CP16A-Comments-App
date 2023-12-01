@@ -18,7 +18,8 @@ const initialCommentsList = []
 class Comments extends Component {
   state = {commentList: initialCommentsList, name: '', comment: ''}
 
-  onAddComment = () => {
+  onAddComment = event => {
+    event.preventDefault()
     const {name, comment} = this.state
     const initialBackgroundColorClassNames = `initial-container ${
       initialContainerBackgroundClassNames[
@@ -36,13 +37,11 @@ class Comments extends Component {
       initialClassName: initialBackgroundColorClassNames,
     }
     console.log(newComment)
-    if (name !== '' && comment !== '') {
-      this.setState(prevState => ({
-        commentList: [...prevState.commentList, newComment],
-        name: '',
-        comment: '',
-      }))
-    }
+    this.setState(prevState => ({
+      commentList: [...prevState.commentList, newComment],
+      name: '',
+      comment: '',
+    }))
   }
 
   changeTheLikeStatus = id => {
@@ -82,8 +81,13 @@ class Comments extends Component {
             <h1 className="heading">Comments</h1>
             <p className="para">Say something about 4.0 Technologies</p>
             <form className="form-container" onSubmit={this.onAddComment}>
-              <input type="text" placeholder="Your Name" />
+              <input
+                type="text"
+                placeholder="Your Name"
+                onChange={this.onChangeName}
+              />
               <textarea
+                onChange={this.onChangeComment}
                 type="text"
                 placeholder="Your Comment"
                 rows="8"
