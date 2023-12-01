@@ -25,6 +25,7 @@ class Comments extends Component {
       name,
       comment,
     }
+    console.log(newComment)
     if (name !== '' && comment !== '') {
       this.setState(prevState => ({
         commentList: [...prevState.commentList, newComment],
@@ -50,30 +51,34 @@ class Comments extends Component {
 
   render() {
     const {commentList} = this.state
+    console.log(commentList)
     return (
-      <div className="bg-container">
-        <div className="comments-container">
-          <h1 className="heading">Comments</h1>
-          <p className="para">Say something about 4.0 Technologies</p>
-          <form className="form-container" onSubmit={this.onAddComment}>
-            <input type="text" placeholder="Your Name" />
-            <textarea
-              type="text"
-              placeholder="Your Comment"
-              rows="8"
-              cols="25"
+      <div className="bg-container1">
+        <div className="bg-container2">
+          <div className="comments-container">
+            <h1 className="heading">Comments</h1>
+            <p className="para">Say something about 4.0 Technologies</p>
+            <form className="form-container" onSubmit={this.onAddComment}>
+              <input type="text" placeholder="Your Name" />
+              <textarea
+                type="text"
+                placeholder="Your Comment"
+                rows="8"
+                cols="25"
+              />
+              <div>
+                <button type="submit">Add Comment</button>
+              </div>
+            </form>
+          </div>
+          <div className="img-container">
+            <img
+              src="https://assets.ccbp.in/frontend/react-js/comments-app/comments-img.png"
+              alt="comments"
+              className="comments-img"
             />
-            <button type="submit">Add Comment</button>
-          </form>
+          </div>
         </div>
-        <div className="img-container">
-          <img
-            src="https://assets.ccbp.in/frontend/react-js/comments-app/comments-img.png"
-            alt="comments"
-            className="comments-img"
-          />
-        </div>
-
         <div className="comments-list">
           <div className="comments-count">{commentList.length}</div>
           <p>Comments</p>
