@@ -1,4 +1,5 @@
 import {Component} from 'react'
+import {formatDistanceToNow} from 'date-fns'
 import {v4 as uuidv4} from 'uuid'
 import CommentItem from '../CommentItem'
 import './index.css'
@@ -32,7 +33,7 @@ class Comments extends Component {
       id: uuidv4(),
       name,
       comment,
-      date: new Date(),
+      date: formatDistanceToNow(new Date()),
       isLiked: false,
       initialClassName: initialBackgroundColorClassNames,
     }
