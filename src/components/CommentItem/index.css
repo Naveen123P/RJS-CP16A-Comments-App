@@ -27,8 +27,12 @@
 }
 
 /* Write your CSS here */
+* {
+  box-sizing: border-box;
+}
 .list-item {
   border-bottom: 2px solid #475569;
+  list-style-type: none;
 }
 .username-container {
   display: flex;
@@ -46,6 +50,7 @@
 }
 .username {
   font-weight: bold;
+  margin-right: 10px;
 }
 .date-time {
   color: #cbd2d9;
@@ -56,9 +61,25 @@
   padding: 5px;
   border-bottom: 2px solid #475569;
 }
+.like-button-container {
+  border-bottom: 2px solid #475569;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .blue-color {
   color: #0b69ff;
 }
 .gray-color {
   color: #475569;
+}
+.delete-button {
+  background-color: transparent;
+  border: none;
+}
+.like-text {
+  color: #475569;
+  margin-left: 5px;
 }
