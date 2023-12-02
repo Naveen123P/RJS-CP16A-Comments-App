@@ -19,21 +19,31 @@ const CommentItem = props => {
   return (
     <li className="list-item">
       <div className="username-container">
-        <div className={initialClassName}>{name[0]}</div>
+        <div className={`"initial-container" ${initialClassName}`}>
+          {name[0]}
+        </div>
         <p className="username">{name}</p>
         <p className="date-time">{date}</p>
       </div>
       <p className="user-comment">{comment}</p>
       <div className="like-delete-container">
+        <div>
+          <button
+            className="like-button-container"
+            type="button"
+            onClick={clickOnLikeButton}
+          >
+            <img src={isLikedOrNot} alt="like" className="like-img" />
+            <p className="like-text">Like</p>
+          </button>
+        </div>
+
         <button
-          className={`like-button-container ${isLikedOrNot}`}
+          data-testid="delete"
+          className="delete-button"
           type="button"
-          onClick={clickOnLikeButton}
+          onClick={deleteComment}
         >
-          <img src={isLikedOrNot} alt="..." className="like-img" />
-          <p className="like-text">Like</p>
-        </button>
-        <button className="delete-button" type="button" onClick={deleteComment}>
           <img
             src="https://assets.ccbp.in/frontend/react-js/comments-app/delete-img.png"
             alt="delete"
