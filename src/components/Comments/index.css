@@ -1,7 +1,6 @@
 /* Write your CSS here */
 .bg-container1 {
-  height: 100vh;
-  background-color: aliceblue; 
+  background-color: aliceblue;
   padding: 50px;
   display: flex;
   flex-direction: column;
