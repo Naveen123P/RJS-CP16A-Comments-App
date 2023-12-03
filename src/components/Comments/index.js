@@ -73,7 +73,7 @@ class Comments extends Component {
   }
 
   render() {
-    const {commentList} = this.state
+    const {commentList, name, comment} = this.state
     console.log(commentList)
     return (
       <div className="bg-container1">
@@ -83,11 +83,13 @@ class Comments extends Component {
             <p className="para">Say something about 4.0 Technologies</p>
             <form className="form-container" onSubmit={this.onAddComment}>
               <input
+                value={name}
                 type="text"
                 placeholder="Your Name"
                 onChange={this.onChangeName}
               />
               <textarea
+                value={comment}
                 onChange={this.onChangeComment}
                 type="text"
                 placeholder="Your Comment"
