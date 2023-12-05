@@ -16,6 +16,8 @@ const CommentItem = props => {
     onDeleteComment(id)
   }
 
+  const colorOfLike = isLiked ? 'blue-color' : 'gray-color'
+
   return (
     <li className="list-item">
       <div className="username-container">
@@ -34,7 +36,7 @@ const CommentItem = props => {
             onClick={clickOnLikeButton}
           >
             <img src={isLikedOrNot} alt="like" className="like-img" />
-            <p className="like-text">Like</p>
+            <p className={`like-text ${colorOfLike}`}>Like</p>
           </button>
         </div>
 
